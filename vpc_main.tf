@@ -135,13 +135,9 @@ resource "google_compute_subnetwork" "vpc_subnetwork_private" {
 # Attach Firewall Rules to allow inbound traffic to tagged instances
 # ---------------------------------------------------------------------------------------------------------------------
 
-module "network_firewall" {
-  source  = "tfe.bigfishgames.com/CentralTech/firewall/gcp"
-  version = "0.0.1"
-
-
+module "firewall" {
+  source  = "tfe.bigfishgames.com/CentralTech/firewall/gcp//modules/firewall"
   name_prefix = var.name_prefix
-
   project                               = var.project
   network                               = google_compute_network.vpc.self_link
   allowed_public_restricted_subnetworks = var.allowed_public_restricted_subnetworks
