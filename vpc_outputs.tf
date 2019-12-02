@@ -8,7 +8,7 @@ output "network" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 output "depended_on" {
-  value = "${null_resource.dependency_setter.id}"
+  value = null_resource.dependency_setter.id
 }
 
 output "public_subnetwork" {
