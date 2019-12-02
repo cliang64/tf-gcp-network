@@ -39,7 +39,7 @@ variable "name_prefix" {
 # These variables can be passed in by the operator
 # ---------------------------------------------------------------------------------------------------------------------
 variable "dependencies" {
-  description = "List of optional dependencies" 
-  type    = "list"
-  default = []
+  description = "List of optional dependencies"
+  type        = "list"
+  default     = []
 }

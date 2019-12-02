@@ -1,5 +1,6 @@
 output "depended_on" {
-  value = "${null_resource.dependency_setter.id}"
+  description = "Hack to help set inter-module dependency. Do not modify."
+  value = null_resource.dependency_setter.id
 }
 output "public" {
   description = "The string of the public tag"
@@ -7,7 +8,7 @@ output "public" {
 }
 
 output "public_restricted" {
-  description = "The string of the public tag"
+  description = "The string of the public_restricted tag"
   value       = local.public_restricted
 }
 
