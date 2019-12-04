@@ -3,6 +3,11 @@ output "network" {
   value       = google_compute_network.vpc.self_link
 }
 
+output "name" {
+  description = "The name for the network"
+  value       = google_compute_network.vpc.name
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Public Subnetwork Outputs
 # ---------------------------------------------------------------------------------------------------------------------
