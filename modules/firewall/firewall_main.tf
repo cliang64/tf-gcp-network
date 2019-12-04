@@ -39,7 +39,7 @@ locals {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_firewall" "public_allow_all_inbound" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name       = "${var.name_prefix}-public-allow-ingress"
 
   project = var.project
@@ -61,7 +61,7 @@ resource "google_compute_firewall" "public_allow_all_inbound" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_firewall" "public_restricted_allow_inbound" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
 
   count = length(var.allowed_public_restricted_subnetworks) > 0 ? 1 : 0
 
@@ -87,7 +87,7 @@ resource "google_compute_firewall" "public_restricted_allow_inbound" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_firewall" "private_allow_all_network_inbound" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name       = "${var.name_prefix}-private-allow-ingress"
 
   project = var.project
@@ -115,7 +115,7 @@ resource "google_compute_firewall" "private_allow_all_network_inbound" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_firewall" "private_allow_restricted_network_inbound" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name       = "${var.name_prefix}-allow-restricted-inbound"
 
   project = var.project

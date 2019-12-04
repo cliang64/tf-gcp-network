@@ -43,7 +43,7 @@ variable "cidr_subnetwork_spacing" {
 
 variable "dependencies" {
   description = "List of optional dependencies" 
-  type    = "list"
+  type    = list(string)
   default = []
 }
 

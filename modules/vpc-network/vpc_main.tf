@@ -26,7 +26,7 @@ resource "null_resource" "dependency_setter" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_network" "vpc" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name    = "${var.name_prefix}-network"
   project = var.project
 
@@ -38,7 +38,7 @@ resource "google_compute_network" "vpc" {
 }
 
 resource "google_compute_router" "vpc_router" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name = "${var.name_prefix}-router"
 
   project = var.project
@@ -53,7 +53,7 @@ resource "google_compute_router" "vpc_router" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_subnetwork" "vpc_subnetwork_public" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name = "${var.name_prefix}-subnetwork-public"
 
   project = var.project
@@ -79,7 +79,7 @@ resource "google_compute_subnetwork" "vpc_subnetwork_public" {
 }
 
 resource "google_compute_router_nat" "vpc_nat" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name = "${var.name_prefix}-nat"
 
   project = var.project
@@ -102,7 +102,7 @@ resource "google_compute_router_nat" "vpc_nat" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_compute_subnetwork" "vpc_subnetwork_private" {
-  depends_on = ["null_resource.dependency_getter"]
+  depends_on = [null_resource.dependency_getter]
   name = "${var.name_prefix}-subnetwork-private"
 
   project = var.project
