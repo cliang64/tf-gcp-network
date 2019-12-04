@@ -78,20 +78,20 @@ output "private_subnetwork_secondary_range_name" {
 
 output "public" {
   description = "The network tag string used for the public access tier"
-  value       = module.network_firewall.public
+  value       = module.firewall.public
 }
 
 output "public_restricted" {
   description = "The string of the public tag"
-  value       = module.network_firewall.public_restricted
+  value       = module.firewall.public_restricted
 }
 
 output "private" {
   description = "The network tag string used for the private access tier"
-  value       = module.network_firewall.private
+  value       = module.firewall.private
 }
 
 output "private_persistence" {
   description = "The network tag string used for the private-persistence access tier"
-  value       = module.network_firewall.private_persistence
+  value       = module.firewall.private_persistence
 }
