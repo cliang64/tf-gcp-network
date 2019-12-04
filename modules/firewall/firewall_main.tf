@@ -11,10 +11,10 @@ resource "null_resource" "dependency_getter" {
 
 resource "null_resource" "dependency_setter" {
   depends_on = [
-    "google_compute_firewall.public_allow_all_inbound",
-    "google_compute_firewall.public_restricted_allow_inbound",
-    "google_compute_firewall.private_allow_all_network_inbound",
-    "google_compute_firewall.private_allow_restricted_network_inbound"
+    google_compute_firewall.public_allow_all_inbound,
+    google_compute_firewall.public_restricted_allow_inbound,
+    google_compute_firewall.private_allow_all_network_inbound,
+    google_compute_firewall.private_allow_restricted_network_inbound
   ]
 }
 

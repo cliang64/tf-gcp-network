@@ -11,11 +11,11 @@ resource "null_resource" "dependency_getter" {
 
 resource "null_resource" "dependency_setter" {
   depends_on = [
-    "google_compute_network.vpc",
-    "google_compute_router.vpc_router",
-    "google_compute_subnetwork.vpc_subnetwork_public",
-    "google_compute_router_nat.vpc_nat",
-    "google_compute_subnetwork.vpc_subnetwork_private"
+    google_compute_network.vpc,
+    google_compute_router.vpc_router,
+    google_compute_subnetwork.vpc_subnetwork_public,
+    google_compute_router_nat.vpc_nat,
+    google_compute_subnetwork.vpc_subnetwork_private
   ]
 }
 

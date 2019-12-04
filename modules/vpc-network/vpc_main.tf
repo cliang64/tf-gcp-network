@@ -11,11 +11,11 @@ resource "null_resource" "dependency_getter" {
 
 resource "null_resource" "dependency_setter" {
   depends_on = [
-    "google_compute_network.vpc",
-    "google_compute_router.vpc_router",
-    "google_compute_subnetwork.vpc_subnetwork_public",
-    "google_compute_router_nat.vpc_nat",
-    "google_compute_subnetwork.vpc_subnetwork_private"
+    google_compute_network.vpc,
+    google_compute_router.vpc_router,
+    google_compute_subnetwork.vpc_subnetwork_public,
+    google_compute_router_nat.vpc_nat,
+    google_compute_subnetwork.vpc_subnetwork_private
   ]
 }
 
@@ -27,8 +27,8 @@ resource "null_resource" "dependency_setter" {
 
 resource "google_compute_network" "vpc" {
   depends_on = [null_resource.dependency_getter]
-  name    = "${var.name_prefix}-network"
-  project = var.project
+  name       = "${var.name_prefix}-network"
+  project    = var.project
 
   # Always define custom subnetworks- one subnetwork per region isn't useful for an opinionated setup
   auto_create_subnetworks = "false"
@@ -39,7 +39,7 @@ resource "google_compute_network" "vpc" {
 
 resource "google_compute_router" "vpc_router" {
   depends_on = [null_resource.dependency_getter]
-  name = "${var.name_prefix}-router"
+  name       = "${var.name_prefix}-router"
 
   project = var.project
   region  = var.region
@@ -54,7 +54,7 @@ resource "google_compute_router" "vpc_router" {
 
 resource "google_compute_subnetwork" "vpc_subnetwork_public" {
   depends_on = [null_resource.dependency_getter]
-  name = "${var.name_prefix}-subnetwork-public"
+  name       = "${var.name_prefix}-subnetwork-public"
 
   project = var.project
   region  = var.region
@@ -80,7 +80,7 @@ resource "google_compute_subnetwork" "vpc_subnetwork_public" {
 
 resource "google_compute_router_nat" "vpc_nat" {
   depends_on = [null_resource.dependency_getter]
-  name = "${var.name_prefix}-nat"
+  name       = "${var.name_prefix}-nat"
 
   project = var.project
   region  = var.region
@@ -103,7 +103,7 @@ resource "google_compute_router_nat" "vpc_nat" {
 
 resource "google_compute_subnetwork" "vpc_subnetwork_private" {
   depends_on = [null_resource.dependency_getter]
-  name = "${var.name_prefix}-subnetwork-private"
+  name       = "${var.name_prefix}-subnetwork-private"
 
   project = var.project
   region  = var.region
@@ -145,6 +145,6 @@ module "network_firewall" {
   project                               = var.project
   network                               = google_compute_network.vpc.self_link
   allowed_public_restricted_subnetworks = var.allowed_public_restricted_subnetworks
-  public_subnetwork  = google_compute_subnetwork.vpc_subnetwork_public.self_link
-  private_subnetwork = google_compute_subnetwork.vpc_subnetwork_private.self_link
+  public_subnetwork                     = google_compute_subnetwork.vpc_subnetwork_public.self_link
+  private_subnetwork                    = google_compute_subnetwork.vpc_subnetwork_private.self_link
 }

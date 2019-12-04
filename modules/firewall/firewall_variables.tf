@@ -40,6 +40,6 @@ variable "name_prefix" {
 # ---------------------------------------------------------------------------------------------------------------------
 variable "dependencies" {
   description = "List of optional dependencies"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
