@@ -72,10 +72,11 @@ resource "google_compute_subnetwork" "vpc_subnetwork_public" {
     )
   }
 
+  /* TODO figure out if this is deprecated or something, as it does not function
   log_config {
     aggregation_interval = "INTERVAL_10_MIN"
     flow_sampling        = var.flow_log_sample_rate
-  }
+  }*/
 }
 
 resource "google_compute_router_nat" "vpc_nat" {
@@ -124,11 +125,11 @@ resource "google_compute_subnetwork" "vpc_subnetwork_private" {
       1 * (1 + var.secondary_cidr_subnetwork_spacing)
     )
   }
-
+  /*
   log_config {
     aggregation_interval = "INTERVAL_10_MIN"
     flow_sampling        = var.flow_log_sample_rate
-  }
+  }*/
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
