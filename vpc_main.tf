@@ -127,7 +127,7 @@ resource "google_compute_subnetwork" "vpc_subnetwork_private" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 module "firewall" {
-  source                                = "tfe.bigfishgames.com/CentralTech/network/gcp//modules/firewall"
+  source                                = "./modules/firewall/"
   name_prefix                           = var.name_prefix
   project                               = var.project
   network                               = google_compute_network.vpc.self_link
