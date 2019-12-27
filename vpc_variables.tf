@@ -42,7 +42,7 @@ variable "cidr_subnetwork_spacing" {
 }
 
 variable "dependencies" {
-  description = "List of optional dependencies" 
+  description = "List of optional dependencies"
   type    = list(string)
   default = []
 }
@@ -75,4 +75,10 @@ variable allowed_public_restricted_subnetworks {
   description = "The public networks that is allowed access to the public_restricted subnetwork of the network"
   default     = []
   type        = list(string)
+}
+
+variable "zone" {
+  description = "a valid zone for a given region"
+  type = string
+  default = null
 }
